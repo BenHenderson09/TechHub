@@ -9,4 +9,4 @@ To use this code a MongoDB database title "InfoHub" with two collections, Users 
 each collection are stated in the models directory. 
 
 Note: In the application the platform is referred to as "TechHub" because of a name change from "InfoHub".
-      Any sensitive data has been removed, check out config/database.js
+      Any sensitive data has been removed, check out config/database.js .
