@@ -1,0 +1,49 @@
+<%  include includes/header %>
+
+<div class='container'>
+
+<%if(indexMsg){%>
+    <div class="alert alert-<%=indexMsg.type%> top-buffer" role="alert">
+        <a href='/'><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button></a>
+    <%= indexMsg.msg %>
+    </div>
+<% } %>
+
+<%if(!user){%>
+<h1 class='modal-header display-3'> InfoHub</h1>
+<%}%>
+
+<%if(user){%>
+<h1 class='modal-header display-3'><%=user.username%>'s feed:</h1>
+<br>
+<%}%>
+
+<!-- Search -->
+<form class="form-inline md-form mr-auto mb-4" action='/search' method='POST'>
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" name='txtSearch' aria-label="Search">
+    <button class="btn btn-default" type='submit'>Search</button>
+</form>
+
+<%if (articles){%>
+    <ul class='list-group'>
+    <%articles.forEach(function(article){%>
+        <li class='list-group-item'> 
+        <p class='display-4 small-title'><a href='/articles/view/<%=article.id%>'> <%=article.title%></a></p>
+
+        <%if(article.genre){%>
+        <%article.genre.forEach(function(genre){%>
+        <a class='btn <%=genre.color%> bottom-buffer' style='color:white !important' href='/filter/<%-genre.name%>'><%=genre.name%></a> 
+        <%});%>
+        <%}%>
+
+        <a href='/articles/view/<%=article.id%>'><img src='<%=article.image%>' class='cover-img'></img><a>
+        </li>
+     <%});%>
+    </ul>
+    <br>
+    <br>
+<%}%>
+</div>
+<%  include includes/footer %>

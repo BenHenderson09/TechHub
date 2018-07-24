@@ -1,0 +1,50 @@
+<% include includes/header %>
+
+<div class='container top-buffer'>
+
+<%if(regErrors){%>
+    <%regErrors.forEach((error)=>{%>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%=error.msg%>
+    </div>
+    <%});%>
+<%}%>
+
+<h1>Register</h1>
+
+<form action='/users/register' method='POST' class='top-buffer'>
+
+ <div class='form-group'>
+ <label>Fullname:</label>
+ <br>
+ <input type='text' class='form-control' name='Fullname'></input>
+ </div>
+
+ <div class='form-group'>
+ <label>Username:</label>
+ <br>
+ <input type='text' class='form-control' name='Username'></input>
+ </div>
+
+ <div class='form-group'>
+ <label>Email:</label>
+ <br>
+ <input type='text' class='form-control' name='Email'></input>
+ </div>
+
+ <div class='form-group'>
+ <label>Password:</label>
+ <br>
+ <input type='password' class='form-control' name='Password'></input>
+ </div>
+
+ <div class='form-group'>
+ <label>Resubmit Password:</label>
+ <br>
+ <input type='password' class='form-control' name='Password2'></input>
+ </div>
+
+ <input class='btn btn-primary' type='submit' value='Submit' name='name'></input>
+</form>
+
+<% include includes/footer %>

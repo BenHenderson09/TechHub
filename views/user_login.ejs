@@ -1,0 +1,33 @@
+<% include includes/header %>
+
+<div class='container top-buffer'>
+
+<%if(loginMsg){%>
+    <div class="alert alert-<%=loginMsg.type%> top-buffer" role="alert">
+        <a href='/users/login'><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button></a>
+    <%= loginMsg.msg %>
+    </div>
+<% } %>
+
+<h1 class='modal-header'>Login</h1>
+
+<form action='/users/login' method='POST' class='top-buffer'>
+
+ <div class='form-group'>
+ <label>Email:</label>
+ <br>
+ <input type='text' class='form-control' name='email'></input>
+ </div>
+
+ <div class='form-group'>
+ <label>Password:</label>
+ <br>
+ <input type='password' class='form-control' name='password'></input>
+ </div>
+
+ <input class='btn btn-primary' type='submit' value='Submit'></input
+</form>
+
+<% include includes/footer %>

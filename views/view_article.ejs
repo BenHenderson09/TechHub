@@ -1,0 +1,33 @@
+<% include includes/header%>
+
+<%if (article){%>
+
+<div class='container top-buffer card'>
+
+<div class="modal-header">
+<h1><%= article.title %></h1>
+</div>
+
+<div class='card-body'>
+<p><%- article.body %></p>
+</div>
+
+<div class='modal-footer'>
+
+<%if(user){%>
+  <%if(user.id == article.author){%>
+
+  <div class='btn-pair'>
+    <a class='btn btn-primary' href='/articles/edit/<%=article.id%>'>Edit</a>
+    <a class='btn btn-danger deleteArticle' data-id='<%=article.id%>' href="#">Delete</a>
+  </div>
+  <%}%>
+<%}%>
+
+<small> Created By: <%=author%></small>
+</div>
+</div>
+
+<%}%>
+
+<% include includes/footer%>
