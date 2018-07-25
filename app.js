@@ -207,9 +207,10 @@ app.get('/dashboard',checkUserLoggedIn, (req,res)=>{
             article.forEach((article)=>{
                 count++;
             });
+            const posts = article.reverse();
             res.render('dashboard',{
             postcount:count,
-            articles:article
+            articles:posts
     });
         }
     });
