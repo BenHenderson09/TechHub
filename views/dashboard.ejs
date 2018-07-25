@@ -1,0 +1,43 @@
+<% include includes/header %>
+
+<div class='container top-buffer'>
+<h1 class='modal-header'>Dashboard:</h1>
+
+<br>
+<div class='card card-body'>
+<h1 class='modal-header'><%=user.username%>:</h1>
+<ul class="list-group">
+<li class="list-group-item">Fullname: <%=user.username%> </li>
+<li class="list-group-item">Username: <%=user.fullname%> </li>
+<li class="list-group-item">Email: <%=user.email%>  </li>
+<li class="list-group-item">Postcount: <%=postcount%></li>
+</ul>
+</div>
+
+
+<%if (articles.length >= 1){%>
+
+    <br>
+    <h1 class='modal-header'>Posts:</h1>
+    <br>
+
+    <ul class='list-group'>
+    <%articles.forEach(function(article){%>
+        <li class='list-group-item'> 
+        <p class='display-4 small-title'><a href='/articles/view/<%=article.id%>'> <%=article.title%></a></p>
+
+        <%if(article.genre){%>
+        <%article.genre.forEach(function(genre){%>
+        <a class='btn <%=genre.color%> bottom-buffer' style='color:white !important'><%=genre.name%></a> 
+        <%});%>
+        <%}%>
+
+        <a href='/articles/view/<%=article.id%>'><img src='<%=article.image%>' class='cover-img'></img><a>
+        </li>
+     <%});%>
+    </ul>
+    <br>
+    <br>
+<%}%>
+
+<% include includes/footer %>

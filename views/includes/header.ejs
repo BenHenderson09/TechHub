@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <title> InfoHub </title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+ <link rel="stylesheet" href="/style.css">
+ <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+ <script type='text/javascript' src='/main.js'></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                InfoHub
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/services">Services</a>
+                  </li>
+                </ul>
+               
+          
+                <%if(user){%>
+                <ul class="nav navbar-nav navbar-right" style="margin-right:60px;">
+                  <li class="nav-item"><a class="nav-link" style="color:white !important"><%=user.username%></a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/articles/add" style="color:white !important">Add Article</a></li>
+                </ul>
+                <%}%>
+            
+
+              </div>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                   
+                        <li class="nav-item">
+                            <%if(!user){%>
+                            <a class="nav-link" href="/users/login">Login</a> <%}%>
+                            <%if(user){%>
+                            <a class="nav-link" href="/users/logout">Logout</a> <%}%>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/register">Register</a>
+                        </li>
+               
+                </ul>
+            </div>
+    </nav>

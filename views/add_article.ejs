@@ -1,0 +1,153 @@
+<%  include includes/header %>
+
+<!--  ======================Text Editor Stuff============================  -->
+<!-- Include CSS for icons. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+ 
+<!-- Include Editor style. -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Include Editor JS files. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+ 
+<!-- Initialize the editor. -->
+<script>
+  $(function() {
+    $('textarea').froalaEditor()
+  });
+</script> 
+<!-- ===================================================================== -->
+
+<div class='container top-buffer'>
+<h1 class='modal-header'> Add Article </h1>
+<br>
+<%if(formErrors){%>
+<ul>
+<%formErrors.forEach(function(error){%>
+    <li><%=error.msg%></li>
+ <%});%>
+</ul>
+<%}%>
+
+<form method='POST' action='/articles/add/submit' enctype="multipart/form-data">
+
+<div class='form-group'>
+ <label>Title:</label>
+ <br>
+ <input type='text' name='title' class='form-control'></input>
+ <br>
+ 
+ <div class='form-group'>
+ <label>Body:</label>
+ <br>
+ <textarea type='text' name='body' class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+ 
+ <br>
+
+<div class='card card-body'>
+<h3 class='modal-header'>Choose a Cover Image:</h3>
+<br>
+<input type='file' name='img' id='image'></input>
+</div>
+ <br>
+ 
+ <!-- =============== Selecting Genres =============== -->
+ <div class='card card-body'>
+ <h3 class='modal-header'>Select Some Genres:</h3>
+   
+<div class="container">
+<!-- ============================ Programming=========================== -->
+  <div class="row">
+    <div class="col">
+    <h4>Programming:</h4>
+     <div class="custom-control custom-checkbox top-buffer">
+      <input type="checkbox" class="custom-control-input" id="programming_desktop" name="programming_desktop">
+      <label class="custom-control-label btn btn-outline-primary" for="programming_desktop">Software Development</label>
+    </div>
+
+      <div class="custom-control custom-checkbox top-buffer">
+        <input type="checkbox" class="custom-control-input" id="programming_mobile" name="programming_mobile">
+        <label class="custom-control-label btn btn-outline-success" for="programming_mobile">Mobile Development</label>
+      </div>
+
+      <div class="custom-control custom-checkbox top-buffer">
+        <input type="checkbox" class="custom-control-input" id="programming_web" name="programming_web">
+        <label class="custom-control-label btn btn-outline-secondary" for="programming_web">Web Development</label>
+      </div>
+    </div>
+
+<!-- ================================================================= -->
+
+<!-- ============================ Data Sci=========================== -->
+    <div class="col">
+    <h4>Data Science:</h4>
+    <div class="custom-control custom-checkbox top-buffer">
+    <input type="checkbox" class="custom-control-input" id="science_ml" name="science_ml">
+    <label class="custom-control-label btn btn-outline-info" for="science_ml">Machine Learning</label>
+  </div>
+
+    <div class="custom-control custom-checkbox top-buffer">
+      <input type="checkbox" class="custom-control-input" id="science_rd" name="science_rd">
+      <label class="custom-control-label btn btn-outline-danger" for="science_rd">Recent Developments</label>
+    </div>
+
+    <div class="custom-control custom-checkbox top-buffer">
+      <input type="checkbox" class="custom-control-input" id="science_maths" name="science_maths">
+      <label class="custom-control-label btn btn-outline-primary" for="science_maths">Mathematics</label>
+    </div>
+    </div>
+  </div>
+<!-- =================================================================== -->
+<br>
+
+
+<!-- ============================ Robotics=========================== -->
+  <div class="row">
+    <div class="col">
+    <h4>Robotics:</h4>
+     <div class="custom-control custom-checkbox top-buffer">
+      <input type="checkbox" class="custom-control-input" id="robotics_irl" name="robotics_irl">
+      <label class="custom-control-label btn btn-outline-danger" for="robotics_irl">Robotics in Industry</label>
+    </div>
+
+      <div class="custom-control custom-checkbox top-buffer">
+        <input type="checkbox" class="custom-control-input" id="robotics_rd" name="robotics_rd">
+        <label class="custom-control-label btn btn-outline-warning" for="robotics_rd">Recent Developments</label>
+      </div>
+
+      <div class="custom-control custom-checkbox top-buffer">
+        <input type="checkbox" class="custom-control-input" id="robotics_hp" name="robotics_hp">
+        <label class="custom-control-label btn btn-outline-info" for="robotics_hp">Hobby Projects</label>
+      </div>
+    </div>
+
+<!-- ================================================================= -->
+
+<!-- ============================ IRL=========================== -->
+    <div class="col">
+    <h4>Other:</h4>
+    <div class="custom-control custom-checkbox top-buffer">
+    <input type="checkbox" class="custom-control-input" id="other_employment" name="other_employment">
+    <label class="custom-control-label btn btn-outline-dark" for="other_employment">Business/Employment</label>
+  </div>
+
+    <div class="custom-control custom-checkbox top-buffer">
+      <input type="checkbox" class="custom-control-input" id="other_education" name="other_education">
+      <label class="custom-control-label btn btn-outline-dark" for="other_education">Education</label>
+    </div>
+
+    <div class="custom-control custom-checkbox top-buffer">
+      <input type="checkbox" class="custom-control-input" id="other_advice" name="other_advice">
+      <label class="custom-control-label btn btn-outline-dark" for="other_advice">Advice</label>
+    </div>
+    </div>
+  </div>
+<!-- =================================================================== -->
+ </div>
+  <br>
+  </div>
+</div>
+ <input type='submit' value='Submit' class='btn btn-primary'  style='margin-left:15px'></input>
+ </form>
+<% include includes/footer %>
