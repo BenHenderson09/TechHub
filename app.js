@@ -106,6 +106,7 @@ app.get('/', (req,res)=>{
             console.log(err);
         }
         else{
+        const posts = articles.reverse(); 
         res.render('index', {
             articles: articles,
         });
@@ -124,8 +125,9 @@ app.get('/home/:msg', (req,res)=>{
         }
         else{
         var msg = JSON.parse(req.params.msg);
+        const posts = articles.reverse(); 
         res.render('index', {
-            articles: articles,
+            articles: posts,
             indexMsg: msg
         });
         }
@@ -141,9 +143,8 @@ app.post('/search', (req, res)=>{
             console.log(err);
             return res.render('index', {articles: null});
         }
-        console.log(articles);
-        console.log("title:"+title);
-        res.render('index', {articles: articles});
+        const posts = articles.reverse(); 
+        res.render('index', {articles: posts});
     });
 });
 
@@ -166,12 +167,13 @@ app.get('/filter/:genre', (req, res)=>{
             });
         });
         console.log(filtered);
-        res.render('index', {articles: filtered});
+            const posts = filtered.reverse(); 
+        res.render('index', {articles: posts});
     }
     });
 });
 
-//Error Page Rute
+//Error Page Route
 app.get('/error', (req,res)=>{
     res.render('error');
 });
